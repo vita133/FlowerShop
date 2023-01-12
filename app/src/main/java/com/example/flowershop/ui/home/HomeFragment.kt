@@ -1,8 +1,10 @@
 package com.example.flowershop.ui.home
 
+import android.content.ContentValues
 import com.example.flowershop.Adapters.ShopListAdapter
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -84,8 +86,14 @@ class HomeFragment : Fragment(), ShopListAdapter.Listener {
         infoProduct.put("name", name!!)
         infoProduct.put("price", price!!)
         infoProduct.put("image", image!!)
-        database.collection("favorite").document(id).set(infoProduct)
-        Toast.makeText(activity, "Add to favorite!", Toast.LENGTH_SHORT).show();
+        database.collection("favorite").document(id).set(infoProduct).addOnSuccessListener{
+            Toast.makeText(activity, "Product to favorite saved", Toast.LENGTH_SHORT).show();
+        }
+            .addOnFailureListener {
+                Toast.makeText(activity, "Error!", Toast.LENGTH_SHORT).show();
+                Log.d(ContentValues.TAG, it.toString());
+            }
+        Toast.makeText(activity, "Add to favorite", Toast.LENGTH_SHORT).show();
     }
 
 }

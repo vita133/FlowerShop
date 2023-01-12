@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         infoProduct.put("price", price!!)
         infoProduct.put("image", image!!)
         database.collection("flowers").document(id).set(infoProduct).addOnSuccessListener() {
-                Toast.makeText(this, "Note saved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Product saved", Toast.LENGTH_SHORT).show();
             }
             .addOnFailureListener {
                     Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show();

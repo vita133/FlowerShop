@@ -10,7 +10,7 @@
         android:id="@+id/favoriteRecyclerView"
         android:layout_width="408dp"
         android:layout_height="729dp"
-        tools:listitem="@layout/favorite_row"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/favorite_row" />
 </androidx.constraintlayout.widget.ConstraintLayout>
