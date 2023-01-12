@@ -1,13 +1,12 @@
 package com.example.flowershop.ui.home
 
-import ShopListAdapter
-import android.content.ContentValues.TAG
+import com.example.flowershop.Adapters.ShopListAdapter
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -78,14 +77,15 @@ class HomeFragment : Fragment(), ShopListAdapter.Listener {
     override fun addToFavorite(product: Product){
         val id = product.id.toString()
         val name = product.name
-        val price = product.price.toString()
+        val price = product.price
         val image = product.image
 
         val infoProduct = HashMap<String,Any>()
         infoProduct.put("name", name!!)
-        infoProduct.put("price", price)
+        infoProduct.put("price", price!!)
         infoProduct.put("image", image!!)
         database.collection("favorite").document(id).set(infoProduct)
+        Toast.makeText(activity, "Add to favorite!", Toast.LENGTH_SHORT).show();
     }
 
 }

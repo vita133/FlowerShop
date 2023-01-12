@@ -1,6 +1,8 @@
 package com.example.flowershop
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -43,14 +45,20 @@ class MainActivity : AppCompatActivity() {
     private fun setData(product: Product){
         val id = product.id.toString()
         val name = product.name
-        val price = product.price.toString()
+        val price = product.price
         val image = product.image
 
         val infoProduct = HashMap<String,Any>()
         infoProduct.put("name", name!!)
-        infoProduct.put("price", price)
+        infoProduct.put("price", price!!)
         infoProduct.put("image", image!!)
-        database.collection("flowers").document(id).set(infoProduct)
+        database.collection("flowers").document(id).set(infoProduct).addOnSuccessListener() {
+                Toast.makeText(this, "Note saved", Toast.LENGTH_SHORT).show();
+            }
+            .addOnFailureListener {
+                    Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, it.toString());
+                }
     }
 
     private fun addDataToFirestore() {

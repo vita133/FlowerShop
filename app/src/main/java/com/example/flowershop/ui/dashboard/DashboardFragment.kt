@@ -7,23 +7,26 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.flowershop.TopSpacingItemDecoration
-import com.example.flowershop.databinding.FragmentDashboardBinding
-import FavoriteListAdapter
-import android.util.Log
+import androidx.recyclerview.widget.RecyclerView
+import com.example.flowershop.Adapters.FavoriteAdapterFireStore
 import com.example.flowershop.Product
+import com.example.flowershop.databinding.FragmentDashboardBinding
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.api.Context
 import com.google.firebase.firestore.*
 
-class DashboardFragment : Fragment() {
 
+class DashboardFragment : Fragment() {
     private var _binding: FragmentDashboardBinding? = null
 
+
+    private val db = FirebaseFirestore.getInstance()
+    private val favoriteItemsRef = db.collection("favorite")
+
+    private var adapter: FavoriteAdapterFireStore? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private lateinit var favoriteListAdapter: FavoriteListAdapter
-    private var database = FirebaseFirestore.getInstance()
-    private var datafavotite = ArrayList<Product>()
 
 
     override fun onCreateView(
@@ -40,53 +43,35 @@ class DashboardFragment : Fragment() {
         dashboardViewModel.text.observe(viewLifecycleOwner) {
         }
 
-        initRecyclerView()
-        EventChangeListener()
-        addDataSet()
+        setUpRecyclerView()
+        adapter?.startListening();
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        adapter?.stopListening();
     }
 
-    private fun addDataSet() {
-        favoriteListAdapter.submitList(datafavotite)
-    }
+private fun setUpRecyclerView() {
+    val query: Query = favoriteItemsRef
+    val options: FirestoreRecyclerOptions<Product> = FirestoreRecyclerOptions.Builder<Product>()
+        .setQuery(query, Product::class.java)
+        .build()
+    adapter = FavoriteAdapterFireStore(options)
+    val recyclerView: RecyclerView = binding.favoriteRecyclerView
+    recyclerView.setHasFixedSize(true)
+    recyclerView.layoutManager = LinearLayoutManager(activity)
+    recyclerView.adapter = adapter
+}
 
-    private fun initRecyclerView() {
-        binding.favoriteRecyclerView.apply {
-            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-            val topSpacingDecoration = TopSpacingItemDecoration(30)
-            addItemDecoration(topSpacingDecoration)
-            favoriteListAdapter = FavoriteListAdapter(this@DashboardFragment)
-            adapter = favoriteListAdapter
-        }
-
-    }
-
-    fun EventChangeListener(){
-        database.collection("favorite")
-            .addSnapshotListener(object: EventListener<QuerySnapshot>{
-                override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
-                    if (error != null){
-                        Log.e("Firestore error", error.message.toString())
-                        return
-                    }
-                    for(dc : DocumentChange in value?.documentChanges!!){
-                        if(dc.type == DocumentChange.Type.ADDED){
-                            datafavotite.add(dc.document.toObject(Product::class.java))
-                        }
-                    }
-                    favoriteListAdapter.notifyDataSetChanged()
-                }
-            })
-    }
-
-     fun deleteFromFavorite(product: Product) {
+    fun deleteFromFavorite(product: Product) {
 
     }
     fun addToBasket(product: Product){
     }
-}
+
+    }
+
+

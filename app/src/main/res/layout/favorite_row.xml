@@ -21,9 +21,11 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/favoriteButtonFavorite"
-                style="@style/ButtonDark"
+                android:id="@+id/addButtonFavorite"
+                android:src="@drawable/ic_baseline_add_24"
+                android:tint="@color/white"
                 android:layout_width="wrap_content"
+                android:backgroundTint="@color/pink"
                 android:layout_height="169dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"

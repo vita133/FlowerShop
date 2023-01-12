@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/FlowerShop/app/src/main/res/layout/activity_main.xml" value="0.14130434782608695" />
+        <entry key="..\:/FlowerShop/app/src/main/res/layout/favorite_row.xml" value="0.14130434782608695" />
+        <entry key="..\:/FlowerShop/app/src/main/res/layout/fragment_dashboard.xml" value="0.14130434782608695" />
+        <entry key="..\:/FlowerShop/app/src/main/res/layout/shop_row.xml" value="0.14130434782608695" />
         <entry key="..\:/Kotlin/app/src/main/res/drawable-v24/ic_favorite_favorite_svgrepo_white.xml" value="0.108" />
         <entry key="..\:/Kotlin/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.129" />
         <entry key="..\:/Kotlin/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.129" />

@@ -1,18 +1,19 @@
+package com.example.flowershop.Adapters
+
 import android.content.ContentValues
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.flowershop.Product
 import com.example.flowershop.R
-import com.bumptech.glide.annotation.GlideModule
-import com.bumptech.glide.module.AppGlideModule
 import com.bumptech.glide.request.RequestOptions
+import com.example.flowershop.ui.home.HomeFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ShopListAdapter(val listener: Listener) : RecyclerView.Adapter<RecyclerView.ViewHolder>()
@@ -48,7 +49,7 @@ class ShopListAdapter(val listener: Listener) : RecyclerView.Adapter<RecyclerVie
         private val productImage = itemView.findViewById<ImageView>(R.id.productImageView)
         private val productName = itemView.findViewById<TextView>(R.id.productNameTextView)
         private val productPrice = itemView.findViewById<TextView>(R.id.priceTextView)
-        private val favoriteButton = itemView.findViewById<FloatingActionButton>(R.id.addButton)
+        private val favoriteButton = itemView.findViewById<FloatingActionButton>(R.id.favoriteButton)
 
         fun bind(product: Product, listener: Listener){
             productName.setText(product.name)
