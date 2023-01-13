@@ -8,8 +8,8 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="398dp"
+        android:layout_height="242dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         card_view:cardCornerRadius="30dp"
@@ -22,13 +22,13 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/likeButtonFavorite"
+                style="@style/ButtonDark"
                 android:layout_width="wrap_content"
                 android:layout_height="169dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="80dp"
                 android:clickable="true"
-                style="@style/ButtonDark"
                 app:fabSize="mini"
                 app:layout_constraintStart_toEndOf="@+id/favoriteButtonFavoriteAdd"
                 app:layout_constraintTop_toBottomOf="@+id/nameFavoriteText"

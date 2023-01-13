@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E6E6E6"
     tools:context=".ui.dashboard.DashboardFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favoriteRecyclerView"
-        android:layout_width="413dp"
-        android:layout_height="732dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="402dp"
+        android:layout_height="684dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/favorite_row" />
