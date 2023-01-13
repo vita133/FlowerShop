@@ -67,7 +67,7 @@ class ShopListAdapter(val listener: Listener) : RecyclerView.Adapter<RecyclerVie
             }
 
             favoriteButton.setOnClickListener{
-                Log.d(ContentValues.TAG, "addToFavorite: added")
+                Log.d(ContentValues.TAG, "addToFavorite listener")
                 listener.addToFavorite(product)
             }
 

@@ -25,10 +25,6 @@ class HomeFragment : Fragment(), ShopListAdapter.Listener {
     private var _binding: FragmentHomeBinding? = null
     private  var database: FirebaseFirestore = FirebaseFirestore.getInstance()
 
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-
     private val binding get() = _binding!!
 
     private lateinit var shopListAdapter: ShopListAdapter
@@ -93,7 +89,6 @@ class HomeFragment : Fragment(), ShopListAdapter.Listener {
                 Toast.makeText(activity, "Error!", Toast.LENGTH_SHORT).show();
                 Log.d(ContentValues.TAG, it.toString());
             }
-        Toast.makeText(activity, "Add to favorite", Toast.LENGTH_SHORT).show();
     }
 
 }

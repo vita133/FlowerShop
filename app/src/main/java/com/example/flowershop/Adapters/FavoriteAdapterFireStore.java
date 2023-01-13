@@ -39,7 +39,14 @@ public class FavoriteAdapterFireStore extends FirestoreRecyclerAdapter<Product, 
         Glide.with(context).load(model.getImage()).into(holder.ViewImage);
 
         positionCurr = model.getId();
-        holder.likeButton.setOnClickListener(this);
+        holder.likeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getBindingAdapterPosition();
+                onButtonClick.onButton(position);
+
+            }
+        });
     }
 
     @NonNull
@@ -52,7 +59,7 @@ public class FavoriteAdapterFireStore extends FirestoreRecyclerAdapter<Product, 
 
     @Override
     public void onClick(View view) {
-        onButtonClick.onButton((int) getItemId(positionCurr));
+
     }
 
     public interface  onButtonClicked{

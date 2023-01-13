@@ -46,19 +46,6 @@ class DashboardFragment : Fragment(), FavoriteAdapterFireStore.onButtonClicked {
         setUpRecyclerView()
         adapter?.startListening();
 
-        favoriteItemsRef.addSnapshotListener() { snapshot, e ->
-            if (e != null) {
-                Log.w(TAG, "Listen failed.", e)
-                return@addSnapshotListener
-            }
-
-            if (snapshot != null) {
-                setUpRecyclerView()
-                adapter?.startListening()
-            } else {
-                Log.d(TAG, "Current data: null")
-            }
-        }
         return root
     }
 
@@ -81,7 +68,11 @@ private fun setUpRecyclerView() {
 }
 
     override fun onButton(position: Int) {
-        Toast.makeText(activity, "Deleted$position", Toast.LENGTH_SHORT).show()
+        db.collection("favorite").document(position.toString())
+            .delete()
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+
     }
 
 }
