@@ -21,6 +21,10 @@ Plan to add:
 
 ## Some Screenshots
 
+|             Splash Screen            |             Application Home              |   
+| :----------------------------------: | :---------------------------------------: | 
+| ![](app/src/main/res/snapshots/photo_1_2023-01-13_19-07-00.jpg) | ![](app/src/main/res/snapshots/img.png) 
+
 
 ## Project Setup
 

@@ -5,4 +5,7 @@
     <string name="title_notifications">Notifications</string>
     <string name="favorite">Favorite</string>
     <string name="basket">Basket</string>
+    <string name="free_delivary">Free Delivary</string>
+    <string name="_16_12_22_01">16.12 - 22.01</string>
+    <string name="order_now">Order now</string>
 </resources>
