@@ -1,6 +1,8 @@
 # FlowerShop
 An e-commerce android application written in Kotlin with Firestore, where users can buy flowers. 
 
+> View [_here_](https://github.com/vita133/FlowerShop/tree/master/app/src/main). 
+-------------------------------
 
 ## Overview
 The application contains list of products on which user can click to view its details and then, add them to cart. User can like and dislike the product as well. 
