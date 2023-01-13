@@ -56,7 +56,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="28dp"
                 android:fontFamily="monospace"
-                android:text="Free Delivary"
+                android:text="@string/free_delivary"
                 android:textColor="#393434"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -70,7 +70,7 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="3dp"
                 android:fontFamily="monospace"
-                android:text="16.12 - 22.01"
+                android:text="@string/_16_12_22_01"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageView3"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="4dp"
-                android:text="Oder now"
+                android:text="@string/order_now"
                 app:cornerRadius="30dp"
                 app:layout_constraintStart_toEndOf="@+id/imageView3"
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />

@@ -8,13 +8,12 @@ class Product : Serializable {
     var price: Int? = null
     var image: String? = null
 
-    constructor(){}
+    constructor() {}
 
-    constructor( id: Int?, name: String?, price: Int?, imageUrl: String?) {
+    constructor(id: Int?, name: String?, price: Int?, imageUrl: String?) {
         this.id = id
         this.name = name
         this.price = price
         this.image = imageUrl
     }
-
 }

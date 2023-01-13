@@ -1,7 +1,6 @@
 package com.example.flowershop.ui.home
 
 import android.content.ContentValues
-import com.example.flowershop.Adapters.ShopListAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.flowershop.Adapters.ShopListAdapter
 import com.example.flowershop.ContentActivity
 import com.example.flowershop.DataSource
 import com.example.flowershop.Product
@@ -19,14 +19,13 @@ import com.example.flowershop.TopSpacingItemDecoration
 import com.example.flowershop.databinding.FragmentHomeBinding
 import com.google.firebase.firestore.FirebaseFirestore
 
-
 class HomeFragment : Fragment(), ShopListAdapter.Listener {
 
     private var _binding: FragmentHomeBinding? = null
-    private  var database: FirebaseFirestore = FirebaseFirestore.getInstance()
+    private var database: FirebaseFirestore = FirebaseFirestore.getInstance()
 
-    private val binding get() = _binding!!
-
+    private val binding
+        get() = _binding!!
     private lateinit var shopListAdapter: ShopListAdapter
 
     override fun onCreateView(
@@ -34,8 +33,7 @@ class HomeFragment : Fragment(), ShopListAdapter.Listener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this)[HomeViewModel::class.java]
+        val homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -50,12 +48,12 @@ class HomeFragment : Fragment(), ShopListAdapter.Listener {
         _binding = null
     }
 
-    private fun addDataSet(){
+    private fun addDataSet() {
         val data = DataSource.createDataSet()
         shopListAdapter.submitList(data)
     }
 
-    private fun initRecyclerView(){
+    private fun initRecyclerView() {
         binding.shopRecyclerView.apply {
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             val topSpacingDecoration = TopSpacingItemDecoration(30)
@@ -63,32 +61,34 @@ class HomeFragment : Fragment(), ShopListAdapter.Listener {
             shopListAdapter = ShopListAdapter(this@HomeFragment)
             adapter = shopListAdapter
         }
-
     }
 
     override fun onClick(product: Product) {
-        startActivity(Intent(activity, ContentActivity::class.java).apply{
-            putExtra("item", product)
-        })
+        startActivity(
+            Intent(activity, ContentActivity::class.java).apply { putExtra("item", product) }
+        )
     }
 
-    override fun addToFavorite(product: Product){
+    override fun addToFavorite(product: Product) {
         val id = product.id.toString()
         val name = product.name
         val price = product.price
         val image = product.image
 
-        val infoProduct = HashMap<String,Any>()
+        val infoProduct = HashMap<String, Any>()
         infoProduct.put("name", name!!)
         infoProduct.put("price", price!!)
         infoProduct.put("image", image!!)
-        database.collection("favorite").document(id).set(infoProduct).addOnSuccessListener{
-            Toast.makeText(activity, "Product to favorite saved", Toast.LENGTH_SHORT).show();
-        }
+        database
+            .collection("favorite")
+            .document(id)
+            .set(infoProduct)
+            .addOnSuccessListener {
+                Toast.makeText(activity, "Product to favorite saved", Toast.LENGTH_SHORT).show()
+            }
             .addOnFailureListener {
-                Toast.makeText(activity, "Error!", Toast.LENGTH_SHORT).show();
-                Log.d(ContentValues.TAG, it.toString());
+                Toast.makeText(activity, "Error!", Toast.LENGTH_SHORT).show()
+                Log.d(ContentValues.TAG, it.toString())
             }
     }
-
 }
