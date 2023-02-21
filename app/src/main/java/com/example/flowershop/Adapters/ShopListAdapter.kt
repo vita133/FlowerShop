@@ -12,9 +12,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.flowershop.Product
 import com.example.flowershop.R
+import com.example.flowershop.ui.home.HomeFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class ShopListAdapter(val listener: Listener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ShopListAdapter(val listener: HomeFragment) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var items: List<Product> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ShopListViewHolder(

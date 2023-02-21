@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.flowershop.Adapters.BasketViewModel
 import com.example.flowershop.Adapters.FavoriteAdapterFireStore
 import com.example.flowershop.Product
 import com.example.flowershop.databinding.FragmentDashboardBinding
@@ -22,9 +24,12 @@ class DashboardFragment : Fragment(), FavoriteAdapterFireStore.onButtonClicked {
     private val db = FirebaseFirestore.getInstance()
     private val favoriteItemsRef = db.collection("favorite")
 
+    private val basketViewModel: BasketViewModel by viewModels()
+
     private var adapter: FavoriteAdapterFireStore? = null
     private val binding
         get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,6 +37,7 @@ class DashboardFragment : Fragment(), FavoriteAdapterFireStore.onButtonClicked {
         savedInstanceState: Bundle?
     ): View {
         val dashboardViewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
+
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -66,5 +72,10 @@ class DashboardFragment : Fragment(), FavoriteAdapterFireStore.onButtonClicked {
             .delete()
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+    }
+
+    override fun onBasketButton(product: Product) {
+        basketViewModel.addProductToFirebase(product)
+
     }
 }

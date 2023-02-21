@@ -87,7 +87,7 @@ class HomeFragment : Fragment(), ShopListAdapter.Listener {
                 Toast.makeText(activity, "Product to favorite saved", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener {
-                Toast.makeText(activity, "Error!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "Error add to favorite!", Toast.LENGTH_SHORT).show()
                 Log.d(ContentValues.TAG, it.toString())
             }
     }

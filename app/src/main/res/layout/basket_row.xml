@@ -3,47 +3,57 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/priceManyBasket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="21dp"
         android:fontFamily="monospace"
         android:text="TextView"
+        android:textColor="#000000"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="342dp"
-        tools:layout_editor_absoluteY="79dp"
+        app:layout_constraintStart_toEndOf="@+id/uahManyBasket"
+        app:layout_constraintTop_toBottomOf="@+id/priceOneBasket"
         tools:text="360" />
 
     <TextView
         android:id="@+id/uahManyBasket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="166dp"
+        android:layout_marginTop="21dp"
         android:text="₴"
+        android:textColor="#000000"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="320dp"
-        tools:layout_editor_absoluteY="79dp" />
+        app:layout_constraintStart_toEndOf="@+id/minusButton"
+        app:layout_constraintTop_toBottomOf="@+id/uahOneBasket" />
 
     <TextView
-        android:id="@+id/priceOneFavorite"
+        android:id="@+id/priceOneBasket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="26dp"
         android:fontFamily="monospace"
         android:text="TextView"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="353dp"
-        tools:layout_editor_absoluteY="34dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="360" />
 
     <TextView
         android:id="@+id/uahOneBasket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="10dp"
         android:text="₴"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="320dp"
-        tools:layout_editor_absoluteY="34dp" />
+        app:layout_constraintEnd_toStartOf="@+id/priceOneBasket"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/nameBasketText"
@@ -75,11 +85,12 @@
         android:id="@+id/minusButton"
         android:layout_width="44dp"
         android:layout_height="40dp"
+        android:layout_marginStart="18dp"
         android:layout_marginTop="13dp"
         android:background="@color/pink"
+        app:layout_constraintStart_toEndOf="@+id/countText"
         app:layout_constraintTop_toBottomOf="@+id/nameBasketText"
         app:srcCompat="@drawable/ic_baseline_horizontal_rule_24"
-        tools:layout_editor_absoluteX="110dp"
         app:tint="@color/white" />
 
     <TextView
@@ -87,11 +98,12 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginStart="15dp"
+        android:layout_marginTop="13dp"
         android:layout_marginEnd="18dp"
         android:text="5"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/minusButton"
         app:layout_constraintStart_toEndOf="@+id/plusButton"
-        tools:layout_editor_absoluteY="71dp" />
+        app:layout_constraintTop_toBottomOf="@+id/nameBasketText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

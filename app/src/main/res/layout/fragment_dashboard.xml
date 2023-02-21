@@ -9,9 +9,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favoriteRecyclerView"
-        android:layout_width="402dp"
-        android:layout_height="684dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="414dp"
+        android:layout_height="669dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/favorite_row" />

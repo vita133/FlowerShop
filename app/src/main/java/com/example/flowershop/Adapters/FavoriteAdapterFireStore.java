@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -47,6 +48,15 @@ public class FavoriteAdapterFireStore extends FirestoreRecyclerAdapter<Product, 
 
             }
         });
+
+        holder.basketButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getBindingAdapterPosition();
+                onButtonClick.onBasketButton(model);
+            }
+        });
+
     }
 
     @NonNull
@@ -64,19 +74,21 @@ public class FavoriteAdapterFireStore extends FirestoreRecyclerAdapter<Product, 
 
     public interface  onButtonClicked{
         void onButton(int position);
+        void onBasketButton(Product product);
     }
     class FavoriteListHolder extends RecyclerView.ViewHolder {
         TextView textViewName;
         TextView textViewPrice;
         ImageView ViewImage;
         FloatingActionButton likeButton;
+        Button basketButton;
         public FavoriteListHolder(View itemView) {
             super(itemView);
             ViewImage = (ImageView) itemView.findViewById(R.id.imageFavoriteText);
             textViewPrice = itemView.findViewById(R.id.priceFavoriteText);
             textViewName = itemView.findViewById(R.id.nameFavoriteText);
             likeButton = itemView.findViewById(R.id.likeButtonFavorite);
-
+            basketButton = itemView.findViewById(R.id.favoriteButtonFavoriteAdd);
         }
     }
 }
